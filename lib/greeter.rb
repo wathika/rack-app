@@ -4,7 +4,12 @@ class Greeter
   def call(env)
     #[200, {"Content-Type" => "text/plain"}, ["Hello rack"]]
     #Rack::Response.new("Hello")
-    Rack::Response.new(render("index.html.erb"))
+    request = Rack::Request.new(env)
+    case request.path #to access the url path that the user typed in  to access this page
+    when "/" then Rack::Response.new(render("index.html.erb"))
+    when "/change" then Rack::Response.new(request.params["name"])
+    else Rack::Response.new("Not Found", 404)
+    end
   end
 def render(template)
   path = File.expand_path("../views/#{template}", __FILE__)

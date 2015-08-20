@@ -7,7 +7,11 @@ class Greeter
     request = Rack::Request.new(env)
     case request.path #to access the url path that the user typed in  to access this page
     when "/" then Rack::Response.new(render("index.html.erb"))
-    when "/change" then Rack::Response.new(request.params["name"])
+    when "/change" #setting a cookie and redirecting back to the root homepage
+       Rack::Response.new do |response|
+         response.set_cookie("greet", request.params["name"])
+         response.redirect("/")
+       end
     else Rack::Response.new("Not Found", 404)
     end
   end

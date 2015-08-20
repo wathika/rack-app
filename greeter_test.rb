@@ -20,10 +20,10 @@ describe Greeter do
     @request.get("/", "HTTP_cookie" => "greet=Ruby").body.must_include "Hello Ruby!"
   end
 
-  it "/chages set cookie and redirecst to root" do
-    responce = @request.post("/change", params: {"name" => "Ruby"})
-    responce.status.must_equal 302
+  it "/change sets cookie and redirects to root" do
+    response = @request.post("/change", params: {"name" => "Ruby"})
+    response.status.must_equal 302
     response["location"].must_equal "/"
-    responce["set-Cookie"].must_include "greet=Ruby"
+    response["set-Cookie"].must_include "greet=Ruby"
   end
 end

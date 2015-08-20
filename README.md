@@ -1,6 +1,10 @@
 # rack-app
 building a rack app from scratch
 
+##Rack: A ruby webserver interface
+
+Rack provides a minimal interface between Webservers supporting ruby and ruby frameworks
+
 Rack comes with many helpful utilities such as request and response objects, 
 various middleware, and MockRequest for testing the rack app.
 

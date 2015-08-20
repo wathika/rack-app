@@ -1,6 +1,10 @@
 # rack-app
 building a rack app from scratch
 
+```
+rackup -Ilib
+```
+
 ##Rack: A ruby webserver interface
 
 Rack provides a minimal interface between Webservers supporting ruby and ruby frameworks
